@@ -1,8 +1,18 @@
+#!/usr/bin/env python3
+"""
+Based on the "cashman" application found at https://auth0.com/blog/developing-restful-apis-with-python-and-flask/
+This version is for Meredith Courtney's experiments with a REST API
+
+Top level of Flask application implementing a REST API for managing income and expenses
+
+"""
+
 import os
 import logging
 import time
 from flask import Flask, jsonify, request
 
+from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
 from src.model.income import Income, IncomeSchema
 from src.model.transaction_type import TransactionType
@@ -36,12 +46,11 @@ def get_incomes():
   )
   return jsonify(incomes.data)
 
-
 @app.route('/incomes', methods=['POST'])
 def add_income():
   income = IncomeSchema().load(request.get_json())
   transactions.append(income.data)
-  return "", 204
+  return jsonify({"unique": income.data.id})
 
 @app.route('/expenses')
 def get_expenses():
@@ -56,7 +65,17 @@ def get_expenses():
 def add_expense():
   expense = ExpenseSchema().load(request.get_json())
   transactions.append(expense.data)
-  return "", 204
+  return jsonify({"unique": expense.data.id})
+
+@app.route('/get_item', methods=['POST'])
+def get_item():
+  r = request.get_json()
+  number = r["number"]
+  schema = TransactionSchema(many=True)
+  item = schema.dump(
+    filter(lambda t: t.id == number, transactions)
+  )
+  return jsonify(item.data[0])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,77 @@
+---
+
+test_name: Post income
+
+stages:
+  - name: Post income entry
+    request:
+      url: http://localhost:5000/incomes
+      json:
+        description: "more tickets"
+        amount: 150
+      method: POST
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+      save:
+        body:
+          income_id: unique
+
+---
+
+test_name: Post expense
+
+stages:
+  - name: Post expense entry
+    request:
+      url: http://localhost:5000/expenses
+      json:
+        description: "car"
+        amount: 270
+      method: POST
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+      save:
+        body:
+          expense_id: unique
+
+---
+
+test_name: Get specified transaction
+
+stages:
+  - name: Get 5th transaction
+    request:
+      url: http://localhost:5000/get_item
+      json:
+        number: 5
+      method: POST
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+      body:
+        description: "more tickets"
+
+---
+
+test_name: Post covert expense
+
+stages:
+  - name: Post covert expense entry
+    request:
+      url: http://localhost:5000/expenses
+      json:
+        description: "sneaky covert expense"
+        amount: 230
+      method: POST
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+      save:
+        body:
+          expense_id: unique

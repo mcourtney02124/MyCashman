@@ -1,6 +1,8 @@
 # Using lightweight alpine image
 FROM python:3.4-alpine
 
+MAINTAINER mcourtney02124@gmail.com
+
 # Installing packages
 RUN apk update
 RUN pip3 install --no-cache-dir pipenv

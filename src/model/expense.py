@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from marshmallow import post_load
 
 from .transaction import Transaction, TransactionSchema

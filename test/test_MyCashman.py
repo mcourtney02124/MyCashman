@@ -15,7 +15,7 @@ def test_pizza():
         fh = open("transaction.log", encoding = "utf8")
         for lino, line in enumerate(fh, start=1):
             line = line.rstrip()
-            if line.find("pizza"):
+            if line.find("pizza") > -1:
                 found_pizza = True
                 break
     except EnvironmentError as err:
@@ -32,7 +32,7 @@ def test_covert():
         fh = open("transaction.log", encoding = "utf8")
         for lino, line in enumerate(fh, start=1):
             line = line.rstrip()
-            if line.find("covert"):
+            if line.find("covert") > -1:
                 found_covert = True
                 break
     except EnvironmentError as err:

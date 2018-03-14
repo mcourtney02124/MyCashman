@@ -1,9 +1,10 @@
 # Copyright (c) 2018 Meredith Courtney All rights reserved.
 
 """
-This module provides non-REST tests for the MyCashman application
-It assumes the REST tests have already run, to set up initial conditions
-At present these are skeleton tests, so I can learn how to work with the infrastruture
+This module provides non-REST tests for the MyCashman application.
+It assumes the REST tests have already run, to set up initial conditions.
+It also assumes execution from the top level MyCashman directory.
+At present these are skeleton tests, so I can learn how to work with the infrastruture.
 
 """
 
@@ -11,7 +12,7 @@ def test_pizza():
     found_pizza = False
     fh = None
     try:
-        fh = open("/Users/Meredith/PycharmProjects/MyCashman/transaction.log", encoding = "utf8")
+        fh = open("transaction.log", encoding = "utf8")
         for lino, line in enumerate(fh, start=1):
             line = line.rstrip()
             if line.find("pizza"):
@@ -28,7 +29,7 @@ def test_covert():
     found_covert = False
     fh = None
     try:
-        fh = open("/Users/Meredith/PycharmProjects/MyCashman/transaction.log", encoding = "utf8")
+        fh = open("transaction.log", encoding = "utf8")
         for lino, line in enumerate(fh, start=1):
             line = line.rstrip()
             if line.find("covert"):

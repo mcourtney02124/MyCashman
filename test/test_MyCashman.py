@@ -23,3 +23,20 @@ def test_pizza():
         if fh is not None:
             fh.close()
     assert found_pizza == True
+
+def test_covert():
+    found_covert = False
+    fh = None
+    try:
+        fh = open("/Users/Meredith/PycharmProjects/MyCashman/transaction.log", encoding = "utf8")
+        for lino, line in enumerate(fh, start=1):
+            line = line.rstrip()
+            if line.find("covert"):
+                found_covert = True
+                break
+    except EnvironmentError as err:
+            print (err)
+    finally:
+        if fh is not None:
+            fh.close()
+    assert found_covert == True

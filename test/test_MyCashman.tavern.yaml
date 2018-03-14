@@ -1,5 +1,18 @@
 ---
 
+test_name: Get incomes
+
+stages:
+  - name: Get all incomes
+    request:
+      url: http://localhost:5000/incomes
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+
+---
+
 test_name: Post income
 
 stages:

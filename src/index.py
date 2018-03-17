@@ -95,7 +95,7 @@ def get_item():
 
 @app.route('/get_balance')
 def get_balance():
-    logging.info("Balance inquiry at  " + str(dt.datetime.now())
+    logging.info("Balance inquiry at  " + str(dt.datetime.now()))
     return jsonify({"balance": balance})
 
 if __name__ == "__main__":

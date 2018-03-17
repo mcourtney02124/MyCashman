@@ -41,3 +41,20 @@ def test_covert():
         if fh is not None:
             fh.close()
     assert found_covert == True
+
+def test_balance():
+    found_balance = False
+    fh = None
+    try:
+        fh = open("transaction.log", encoding = "utf8")
+        for lino, line in enumerate(fh, start=1):
+            line = line.rstrip()
+            if line.find("Balance inquiry") > -1:
+                found_balance = True
+                break
+    except EnvironmentError as err:
+            print (err)
+    finally:
+        if fh is not None:
+            fh.close()
+    assert found_balance == True

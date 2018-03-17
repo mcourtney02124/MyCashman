@@ -19,3 +19,31 @@ INFO:root:record 7 2018-03-14 10:47:04.849999 EXPENSE sneaky covert expense -230
 
 INFO:root:record 7 is covert, raise alarm
 INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 10:47:04] "POST /expenses HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 14:15:12] "GET /incomes HTTP/1.1" 200 -
+INFO:root:record 8 2018-03-14 14:15:12.255640 INCOME more tickets 150.0
+
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 14:15:12] "POST /incomes HTTP/1.1" 200 -
+INFO:root:record 9 2018-03-14 14:15:12.329818 EXPENSE car -270.0
+
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 14:15:12] "POST /expenses HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 14:15:12] "POST /get_item HTTP/1.1" 200 -
+INFO:root:record 10 2018-03-14 14:15:12.476176 EXPENSE sneaky covert expense -230.0
+
+INFO:root:record 10 is covert, raise alarm
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 14:15:12] "POST /expenses HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:28] "GET /incomes HTTP/1.1" 200 -
+INFO:root:record 11 2018-03-14 15:28:28.805731 INCOME more tickets 150.0
+
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:28] "POST /incomes HTTP/1.1" 200 -
+INFO:root:record 12 2018-03-14 15:28:28.881232 EXPENSE car -270.0
+
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:28] "POST /expenses HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:28] "POST /get_item HTTP/1.1" 200 -
+INFO:root:record 13 2018-03-14 15:28:29.028856 EXPENSE sneaky covert expense -230.0
+
+INFO:root:record 13 is covert, raise alarm
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:29] "POST /expenses HTTP/1.1" 200 -
+INFO:root:record 14 2018-03-14 15:28:29.105757 EXPENSE covert alarm-rasing expense -115.0
+
+INFO:root:record 14 is covert, raise alarm
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2018 15:28:29] "POST /expenses HTTP/1.1" 200 -

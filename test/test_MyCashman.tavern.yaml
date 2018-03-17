@@ -13,6 +13,34 @@ stages:
 
 ---
 
+test_name: Get expenses
+
+stages:
+  - name: Get all expenses
+    request:
+      url: http://localhost:5000/expenses
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+
+---
+
+test_name: Get balance after initial transactions
+
+stages:
+  - name: Get balance
+    request:
+      url: http://localhost:5000/get_balance
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+      body:
+        balance: 5050.0
+
+---
+
 test_name: Post income
 
 stages:

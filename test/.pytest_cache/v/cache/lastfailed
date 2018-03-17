@@ -1,1 +1,4 @@
-{}
+{
+  "test_MyCashman.py::test_covert": true,
+  "test_MyCashman.py::test_pizza": true
+}

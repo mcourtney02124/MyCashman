@@ -12,7 +12,6 @@ import datetime as dt
 import logging
 import time
 from flask import Flask, jsonify, request
-import pysipp
 
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema

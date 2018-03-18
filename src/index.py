@@ -12,6 +12,7 @@ import datetime as dt
 import logging
 import time
 from flask import Flask, jsonify, request
+import pysipp
 
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
@@ -19,7 +20,10 @@ from src.model.income import Income, IncomeSchema
 from src.model.transaction_type import TransactionType
 
 app = Flask(__name__)
+uas = pysipp.server(srcaddr=('127.0.0.1', 5060))
+uac = pysipp.client(destaddr=uas.srcaddr)
 
+uas(block=False)
 
 time.sleep(5)
 
@@ -47,6 +51,7 @@ transactions.append(first_expense)
 balance += second_expense.amount
 transactions.append(second_expense)
 
+uac()
 
 @app.route('/incomes')
 def get_incomes():

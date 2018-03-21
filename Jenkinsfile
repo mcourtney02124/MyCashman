@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'py.test test/test_MyCashman.tavern.yaml'
                 sh 'py.test test/test_MyCashman.py'
-                sh 'py.test test/test_MyCashman_shutdown.tavern.yaml
+                sh 'py.test test/test_MyCashman_shutdown.tavern.yaml'
                 sh 'sleep 20'
             }
         }

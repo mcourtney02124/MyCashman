@@ -1,0 +1,14 @@
+
+---
+
+test_name: Shut down the application
+
+stages:
+  - name: Shutdown
+    request:
+      url: http://localhost:5000/shutdown
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+

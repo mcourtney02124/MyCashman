@@ -1,4 +1,6 @@
 {
+  "test_MyCashman.py::test_balance": true,
   "test_MyCashman.py::test_covert": true,
+  "test_MyCashman.py::test_ivr_balance": true,
   "test_MyCashman.py::test_pizza": true
 }

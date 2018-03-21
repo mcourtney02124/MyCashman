@@ -1,0 +1,14 @@
+
+---
+
+test_name: Call the balance query API
+
+stages:
+  - name: Get balance
+    request:
+      url: http://localhost:5000/get_balance
+      headers:
+        content-type: application/json
+    response:
+      status_code: 200
+

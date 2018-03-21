@@ -5,10 +5,10 @@
 This module provides support for executing sipp scripts located in the data directory.
 
 """
-
 import shlex
 import subprocess
 
+myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
 
 class SippServer:
 
@@ -20,7 +20,8 @@ class SippServer:
 
     def launch(self):
         moreArgs = shlex.split(self.command)
-        args = ['sipp', '-sf', 'data/' + self.script, '-p', self.port, '-trace_screen'] + moreArgs[:]
+        global myPath
+        args = ['sipp', '-sf', myPath + self.script, '-p', self.port, '-trace_screen'] + moreArgs[:]
         p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              universal_newlines=True)
         self.pid = p.pid
@@ -36,7 +37,8 @@ class SippClient(SippServer):
 
     def launch(self):
         moreArgs = shlex.split(self.command)
-        args = ['sipp', self.target + ":" + self.rport, '-sf', 'data/' + self.script, '-p', self.port,
+        global myPath
+        args = ['sipp', self.target + ":" + self.rport, '-sf', myPath + self.script, '-p', self.port,
                 '-trace_screen'] + moreArgs[:]
         p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              universal_newlines=True)

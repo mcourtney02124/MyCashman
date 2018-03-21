@@ -7,6 +7,9 @@ It also assumes execution from the top level MyCashman directory.
 At present these are skeleton tests, so I can learn how to work with the infrastruture.
 
 """
+import time
+from subprocess import TimeoutExpired
+from src.sipp_procs import SippClient
 
 def test_pizza():
     found_pizza = False
@@ -58,3 +61,20 @@ def test_balance():
         if fh is not None:
             fh.close()
     assert found_balance == True
+
+def test_ivr_balance():
+
+    uac = SippClient(script = "uac_g711_info1.xml", target = "localhost", command="-m 1")
+    clientProc = SippClient.launch(uac)
+    time.sleep(15)
+    # at this point,
+    """
+    try:
+        outs, errs = clientProc.communicate(input="q", timeout=10)
+    except TimeoutExpired:
+        clieintProc.kill()
+        outs.errs = clientProc.communicate()
+    """
+    assert False
+
+

@@ -11,19 +11,29 @@ import os
 import datetime as dt
 import logging
 import time
+from subprocess import TimeoutExpired
 from flask import Flask, jsonify, request
-import pysipp
+# import pysipp looks like pysipp will not run on Linux only, not Mac - AttributeError: module 'select' has no attribute 'epoll'
 
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
 from src.model.income import Income, IncomeSchema
 from src.model.transaction_type import TransactionType
+from src.sipp_procs import SippServer
+
+
 
 app = Flask(__name__)
-uas = pysipp.server(srcaddr=('127.0.0.1', 5060))
-uac = pysipp.client(destaddr=uas.srcaddr)
+#uas = SippServer(script="uas_ivr.xml")
+uas = SippServer(script="uas_ivr_balance.xml")
 
-uas(block=False)
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+serverProc = SippServer.launch(uas)
 
 time.sleep(5)
 
@@ -50,8 +60,6 @@ transactions.append(first_expense)
 
 balance += second_expense.amount
 transactions.append(second_expense)
-
-uac()
 
 @app.route('/incomes')
 def get_incomes():
@@ -102,6 +110,21 @@ def get_item():
 def get_balance():
     logging.info("Balance inquiry at  " + str(dt.datetime.now()))
     return jsonify({"balance": balance})
+
+@app.route('/shutdown')
+def shutdown():
+    global serverProc
+    try:
+        outs, errs = serverProc.communicate(input = "q", timeout = 15)
+    except TimeoutExpired:
+        serverProc.kill()
+        outs, errs = serverProc.communicate()
+
+    print (outs)
+    print (errs)
+
+    shutdown_server()
+    return 'Server shutting down...'
 
 if __name__ == "__main__":
     app.run()

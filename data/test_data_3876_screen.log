@@ -1,0 +1,66 @@
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Timestamp: Wed Jan 31 19:53:59 2018
+
+  Call-rate(length)   Port   Total-time  Total-calls  Remote-host
+  10.0(0 ms)/1.000s   5061      14.01 s           10  127.0.0.1:5060(UDP)
+
+  Call limit reached (-m 10), 0.000 s period  0 ms scheduler resolution
+  0 calls (limit 360)                    Peak was 10 calls, after 1 s
+  0 Running, 11 Paused, 0 Woken up
+  0 dead call msg (discarded)            0 out-of-call msg (discarded)
+  1 open sockets
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+      INVITE ---------->         10        0
+         100 <----------         10        0         0         0
+         183 <----------         0         0         0         0
+         180 <----------         10        0         0         0
+         480 <----------         0         0         0         0
+         487 <----------         0         0         0         0
+         488 <----------         0         0         0         0
+         503 <----------         0         0         0         0
+         200 <----------         10        0         0         0
+         ACK ---------->         10        0
+       Pause [    10.0s]         10                            0
+        INFO ---------->         10        0
+         200 <----------         10        0         0         0
+       Pause [   2000ms]         10                            0
+         BYE ---------->         10        0
+         200 <----------         10        0         0         0
+         ACK ---------->         0         0
+
+------- Waiting for active calls to end. Press [q] again to force exit. -------
+
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2018-01-31	19:53:45:616	1517428425.616651
+  Last Reset Time        | 2018-01-31	19:53:59:629	1517428439.629206
+  Current Time           | 2018-01-31	19:53:59:629	1517428439.629296
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:000              | 00:00:14:012
+  Call Rate              |    0.000 cps              |    0.714 cps
+-------------------------+---------------------------+--------------------------
+  Incoming call created  |        0                  |        0
+  OutGoing call created  |        0                  |       10
+  Total Call created     |                           |       10
+  Current Call           |        0                  |
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |       10
+  Failed call            |        0                  |        0
+-------------------------+---------------------------+--------------------------
+  Call Length            | 00:00:00:000              | 00:00:13:007
+------- Waiting for active calls to end. Press [q] again to force exit. -------
+
+---------------------------- Repartition Screen ------- [1-9]: Change Screen --
+    <No repartion defined>
+  Average Call Length Repartition
+           0 ms <= n <        10 ms :          0
+          10 ms <= n <        50 ms :          0
+          50 ms <= n <       100 ms :          0
+         100 ms <= n <       500 ms :          0
+         500 ms <= n <      1000 ms :          0
+        1000 ms <= n <      5000 ms :          0
+        5000 ms <= n <     10000 ms :          0
+                   n >=    10000 ms :         10
+------- Waiting for active calls to end. Press [q] again to force exit. -------

@@ -1,0 +1,75 @@
+------------------------------ Scenario Screen -------- [1-9]: Change Screen --
+  Timestamp: Wed Jan 31 19:54:03 2018
+
+  Port   Total-time  Total-calls  Transport
+  5060      26.52 s           10  UDP
+
+  0 new calls during 0.000 s period      0 ms scheduler resolution
+  0 calls                                Peak was 10 calls, after 9 s
+  0 Running, 11 Paused, 0 Woken up
+  0 dead call msg (discarded)
+  1 open sockets
+
+                                 Messages  Retrans   Timeout   Unexpected-Msg
+  ----------> INVITE             10        0         0         0
+
+  [    500ms] Pause              10                            0
+  <---------- 100                10        0
+  <---------- 180                10        0
+  [    500ms] Pause              10                            0
+  <---------- 200                10        0         0
+  ----------> ACK         E-RTD1 10        0         0         0
+
+  ----------> 487                0         0         0         0
+  ----------> 488                0         0         0         0
+  ----------> 503                0         0         0         0
+  ----------> INFO               10        0         0         0
+  <---------- 200                10        0
+  ----------> BYE                10        0         0         0
+  <---------- 200                10        0
+  [   4000ms] Pause              10                            0
+------- Waiting for active calls to end. Press [q] again to force exit. -------
+
+----------------------------- Statistics Screen ------- [1-9]: Change Screen --
+  Start Time             | 2018-01-31	19:53:37:104	1517428417.104190
+  Last Reset Time        | 2018-01-31	19:54:03:631	1517428443.631424
+  Current Time           | 2018-01-31	19:54:03:631	1517428443.631510
+-------------------------+---------------------------+--------------------------
+  Counter Name           | Periodic value            | Cumulative value
+-------------------------+---------------------------+--------------------------
+  Elapsed Time           | 00:00:00:000              | 00:00:26:527
+  Call Rate              |    0.000 cps              |    0.377 cps
+-------------------------+---------------------------+--------------------------
+  Incoming call created  |        0                  |       10
+  OutGoing call created  |        0                  |        0
+  Total Call created     |                           |       10
+  Current Call           |        0                  |
+-------------------------+---------------------------+--------------------------
+  Successful call        |        0                  |       10
+  Failed call            |        0                  |        0
+-------------------------+---------------------------+--------------------------
+  Response Time 1        | 00:00:00:000              | 00:00:01:002
+  Call Length            | 00:00:00:000              | 00:00:17:009
+------- Waiting for active calls to end. Press [q] again to force exit. -------
+
+---------------------------- Repartition Screen ------- [1-9]: Change Screen --
+  Average Response Time Repartition 1
+           0 ms <= n <        10 ms :          0
+          10 ms <= n <        20 ms :          0
+          20 ms <= n <        30 ms :          0
+          30 ms <= n <        40 ms :          0
+          40 ms <= n <        50 ms :          0
+          50 ms <= n <       100 ms :          0
+         100 ms <= n <       150 ms :          0
+         150 ms <= n <       200 ms :          0
+                   n >=      200 ms :         10
+  Average Call Length Repartition
+           0 ms <= n <        10 ms :          0
+          10 ms <= n <        50 ms :          0
+          50 ms <= n <       100 ms :          0
+         100 ms <= n <       500 ms :          0
+         500 ms <= n <      1000 ms :          0
+        1000 ms <= n <      5000 ms :          0
+        5000 ms <= n <     10000 ms :          0
+                   n >=    10000 ms :         10
+------- Waiting for active calls to end. Press [q] again to force exit. -------

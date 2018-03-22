@@ -14,6 +14,8 @@ pipeline {
         }
         stage('test') {
             steps {
+                sh 'py.test test/test_sipp_utils.py'
+                sh 'py.test test/test_sipp_procs.py'
                 sh 'py.test test/test_MyCashman.tavern.yaml'
                 sh 'py.test test/test_MyCashman.py'
                 sh 'py.test test/test_MyCashman_shutdown.tavern.yaml'

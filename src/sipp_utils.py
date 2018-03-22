@@ -6,19 +6,22 @@ This module provides utilities for use with execution of sipp scripts.
 
 """
 
+import os
 import os.path
 import re
-import sys
 
 fail_count_re = re.compile(r"""^Failed.*\s(\d+)$""")
 success_re = re.compile(r"""^Successful.*\s(\d+)$""")
+
+myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+
 
 
 def parse_screen_log(script, pid, regexper):
     """Examine a sipp screen log file located in the data directory and return the value captured by the passed-in regex.
        The script name plus process id identify a sipp script execution ('script run')
     """
-    file_path = "data/" + script[:-4] + "_" + str(pid) + "_screen.log"
+    file_path = myPath + script[:-4] + "_" + str(pid) + "_screen.log"
     fh = None
     ret_value = None
     if os.path.isfile(file_path):
@@ -42,7 +45,7 @@ def parse_screen_log(script, pid, regexper):
 def empty_screen_log(script, pid):
     """ Return True if screen log file exists and is empty.
     """
-    file_path = "data/" + script[:-4] + "_" + str(pid) + "_screen.log"
+    file_path = myPath + script[:-4] + "_" + str(pid) + "_screen.log"
     if os.path.isfile(file_path):
         if os.path.getsize(file_path) == 0:
             return True
@@ -71,7 +74,7 @@ def how_many_success(script, pid):
 
 def cleanup_screen_log(script, pid):
     """Delete the screen log for a sipp script run, it is NOT an error if the file does not exist."""
-    file_path = "data/" + script[:-4] + "_" + str(pid) + "_screen.log"
+    file_path = myPath + script[:-4] + "_" + str(pid) + "_screen.log"
     try:
         os.remove(file_path)
     except OSError:

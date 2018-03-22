@@ -10,7 +10,8 @@ import os.path
 import shutil
 import pytest
 
-myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+#myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+myPath = './data/'
 
 from src.sipp_utils import no_failed_calls, how_many_success, cleanup_screen_log, empty_screen_log
 
@@ -19,6 +20,7 @@ from src.sipp_utils import no_failed_calls, how_many_success, cleanup_screen_log
 
 def test_no_failed_calls():
     """no_failed_calls: check a saved sipp screen log for a run that had 0 failed calls."""
+
     script = "test_data.xml"
     pid = 3875
     assert no_failed_calls(script, pid)

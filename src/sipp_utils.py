@@ -13,7 +13,8 @@ import re
 fail_count_re = re.compile(r"""^Failed.*\s(\d+)$""")
 success_re = re.compile(r"""^Successful.*\s(\d+)$""")
 
-myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+#myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+myPath = './data/'
 
 
 

@@ -72,8 +72,8 @@ def test_ivr_balance():
     try:
         outs, errs = clientProc.communicate(input="q", timeout=10)
     except TimeoutExpired:
-        clieintProc.kill()
-        outs.errs = clientProc.communicate()
+        clientProc.kill()
+        outsl errs = clientProc.communicate()
     """
     assert False
 

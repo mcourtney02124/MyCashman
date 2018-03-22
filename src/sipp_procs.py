@@ -8,7 +8,8 @@ This module provides support for executing sipp scripts located in the data dire
 import shlex
 import subprocess
 
-myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+#myPath = '/Users/Meredith/PycharmProjects/MyCashman/data/'
+myPath = './data/'
 
 class SippServer:
 

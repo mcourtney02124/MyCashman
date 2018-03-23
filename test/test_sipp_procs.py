@@ -102,9 +102,9 @@ class TestSippRunCalls:
         except TimeoutExpired:
             TestSippRunCalls.sipp_server_proc.kill()
             outs, errs = TestSippRunCalls.sipp_server_proc.communicate()
-            print(outs)
-            print(errs)
-            pytest.fail('problem stopping sipp server')
+            #print(outs)
+            #print(errs)
+            #pytest.fail('problem stopping sipp server')
         cleanup_screen_log(TestSippRunCalls.ps.script, TestSippRunCalls.ps.pid)
 
     def test_run_1_call(self):
@@ -136,9 +136,9 @@ class TestSippRunCalls:
         except TimeoutExpired:
             sipp_client_proc.kill()
             outs, errs = sipp_client_proc.communicate()
-            print(outs)
-            print(errs)
-            pytest.fail('problem stopping sipp client')
+            #print(outs)
+            #print(errs)
+            #pytest.fail('problem stopping sipp client')
 
 
         assert how_many_success(pc.script, pc.pid) == 30

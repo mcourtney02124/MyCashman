@@ -45,27 +45,5 @@ class SippClient(SippServer):
                              universal_newlines=True)
         self.pid = p.pid
         return p
- """
-
-class SippClient:
-
-    def __init__(self, script="uac.xml", target="127.0.0.1", lport=6060, rport=5060, command=""):
-        self.script = script
-        self.port = str(lport)
-        self.target = target
-        self.rport = str(rport)
-        self.command = command
-        self.pid = 0
-
-    def launch(self):
-        moreArgs = shlex.split(self.command)
-        global myPath
-        args = ['sipp', self.target + ":" + self.rport, '-sf', myPath + self.script, '-p', self.port,
-                '-trace_screen'] + moreArgs[:]
-        p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             universal_newlines=True)
-        self.pid = p.pid
-        return p
-"""
 
 

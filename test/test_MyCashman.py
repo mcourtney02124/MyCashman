@@ -62,19 +62,5 @@ def test_balance():
             fh.close()
     assert found_balance == True
 
-def test_ivr_balance():
-
-    uac = SippClient(script = "uac_g711_info1.xml", target = "localhost", command="-m 1")
-    clientProc = SippClient.launch(uac)
-    time.sleep(15)
-    # at this point,
-    """
-    try:
-        outs, errs = clientProc.communicate(input="q", timeout=10)
-    except TimeoutExpired:
-        clientProc.kill()
-        outsl errs = clientProc.communicate()
-    """
-    assert False
 
 

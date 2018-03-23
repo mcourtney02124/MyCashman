@@ -1,14 +1,19 @@
 
 ---
 
-test_name: Call the balance query API
-
+test_name: Call the balance query API from the sipp server script
 stages:
   - name: Get balance
     request:
       url: http://localhost:5000/get_balance
+      json:
+        description: "ivr"
+        amount: 0
+      method: POST
       headers:
         content-type: application/json
     response:
       status_code: 200
+
+
 

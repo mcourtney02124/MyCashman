@@ -32,6 +32,10 @@ stages:
   - name: Get balance
     request:
       url: http://localhost:5000/get_balance
+      json:
+        description: "web"
+        amount: 0
+      method: POST
       headers:
         content-type: application/json
     response:
@@ -84,11 +88,11 @@ stages:
 test_name: Get specified transaction
 
 stages:
-  - name: Get 5th transaction
+  - name: Get 6th transaction
     request:
       url: http://localhost:5000/get_item
       json:
-        number: 5
+        number: 6
       method: POST
       headers:
         content-type: application/json

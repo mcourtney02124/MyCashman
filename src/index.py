@@ -18,6 +18,7 @@ from flask import Flask, jsonify, request
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
 from src.model.income import Income, IncomeSchema
+from src.model.balance import Balance, BalanceSchema
 from src.model.transaction_type import TransactionType
 from src.sipp_procs import SippServer
 
@@ -106,9 +107,13 @@ def get_item():
     )
     return jsonify(item.data[0])
 
-@app.route('/get_balance')
+@app.route('/get_balance', methods=['POST'])
 def get_balance():
-    logging.info("Balance inquiry at  " + str(dt.datetime.now()))
+    global balance
+    r = request.get_json()
+    balance_inquiry = BalanceSchema().load(request.get_json())
+    transactions.append(balance_inquiry.data)
+    logging.info("Balance inquiry at  " + str(dt.datetime.now()) + "balance is currently " + str(balance))
     return jsonify({"balance": balance})
 
 @app.route('/shutdown')
@@ -120,7 +125,6 @@ def shutdown():
         serverProc.kill()
         outs, errs = serverProc.communicate()
 
-    print (outs)
     print (errs)
 
     shutdown_server()

@@ -25,7 +25,7 @@ from src.sipp_procs import SippServer
 
 
 app = Flask(__name__)
-#uas = SippServer(script="uas_ivr.xml")
+
 uas = SippServer(script="uas_ivr_balance.xml")
 
 def shutdown_server():

@@ -31,7 +31,7 @@ def test_ivr_balance():
         fh = open("transaction.log", encoding = "utf8")
         for lino, line in enumerate(fh, start=1):
             line = line.rstrip()
-            if line.find("web") > -1:
+            if line.find("ivr") > -1:
                 found_balance = True
                 break
     except EnvironmentError as err:

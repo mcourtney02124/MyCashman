@@ -58,9 +58,12 @@ transactions.append(second_income)
 
 balance += first_expense.amount
 transactions.append(first_expense)
-
 balance += second_expense.amount
 transactions.append(second_expense)
+
+@app.route('/')
+def home_page():
+    return 'This is MyCashman'
 
 @app.route('/incomes')
 def get_incomes():
@@ -111,9 +114,10 @@ def get_item():
 def get_balance():
     global balance
     r = request.get_json()
-    balance_inquiry = BalanceSchema().load(request.get_json())
+    r["amount"] = balance
+    balance_inquiry = BalanceSchema().load(r)
     transactions.append(balance_inquiry.data)
-    logging.info("Balance inquiry at  " + str(dt.datetime.now()) + "balance is currently " + str(balance))
+    logging.info("Balance inquiry at  " + str(dt.datetime.now()) + " balance is currently " + str(balance))
     return jsonify({"balance": balance})
 
 @app.route('/shutdown')

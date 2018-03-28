@@ -33,7 +33,7 @@ stages:
     request:
       url: http://localhost:5000/get_balance
       json:
-        description: "web"
+        description: "rest"
         amount: 0
       method: POST
       headers:

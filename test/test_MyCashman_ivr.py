@@ -23,7 +23,7 @@ def test_ivr_balance():
         outs, errs = clientProc.communicate()
         print(outs)
         print(errs)
-        pytest.fail('problem with sipp client')
+        pytest.fail('sipp client timeout expired')
 
     found_balance = False
     fh = None

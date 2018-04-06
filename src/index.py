@@ -13,14 +13,14 @@ import logging
 import time
 from subprocess import TimeoutExpired
 from flask import Flask, jsonify, request
-# import pysipp looks like pysipp will not run on Linux only, not Mac - AttributeError: module 'select' has no attribute 'epoll'
+# import pysipp looks like pysipp will run on Linux only, not Mac - AttributeError: module 'select' has no attribute 'epoll'
 
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
 from src.model.income import Income, IncomeSchema
 from src.model.balance import Balance, BalanceSchema
 from src.model.transaction_type import TransactionType
-from src.sipp_procs import SippServer
+from src.sipp_procs import SippServer, SippClient
 
 
 
@@ -109,6 +109,24 @@ def get_item():
         filter(lambda t: t.id == number, transactions)
     )
     return jsonify(item.data[0])
+
+@app.route('get_balance')
+def get_balance_client():
+    logging.info("Attempting IVR balance inquiry")
+    uac = SippClient(script="uac_g711_info1.xml", target="127.0.0.1", command="-m 1")
+    clientProc = SippClient.launch(uac)
+    time.sleep(15)
+    # at this point, make sure the client completed
+
+    try:
+        outs, errs = clientProc.communicate(input="q", timeout=10)
+    except TimeoutExpired:
+        clientProc.kill()
+        outs, errs = clientProc.communicate()
+        print(outs)
+        print(errs)
+
+    return
 
 @app.route('/get_balance', methods=['POST'])
 def get_balance():

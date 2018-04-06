@@ -13,7 +13,7 @@ import logging
 import time
 from subprocess import TimeoutExpired
 from flask import Flask, jsonify, request
-# import pysipp looks like pysipp will not run on Linux only, not Mac - AttributeError: module 'select' has no attribute 'epoll'
+import pysipp looks like pysipp will run on Linux only, not Mac - AttributeError: module 'select' has no attribute 'epoll'
 
 from src.model.transaction import Transaction, TransactionSchema
 from src.model.expense import Expense, ExpenseSchema
@@ -26,7 +26,9 @@ from src.sipp_procs import SippServer
 
 app = Flask(__name__)
 
-uas = SippServer(script="uas_ivr_balance.xml")
+# uas = SippServer(script="uas_ivr_balance.xml")
+uas = pysipp.server(srcaddr=('127.0.0.1', 5060))
+uasProc = uas(block=False) # uasProc is a pysipp.launch.PopenRunner
 
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
@@ -34,7 +36,7 @@ def shutdown_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
-serverProc = SippServer.launch(uas)
+#serverProc = SippServer.launch(uas)
 
 time.sleep(5)
 
@@ -61,9 +63,11 @@ transactions.append(first_expense)
 balance += second_expense.amount
 transactions.append(second_expense)
 
+"""
 @app.route('/')
 def home_page():
     return 'This is MyCashman'
+"""
 
 @app.route('/incomes')
 def get_incomes():

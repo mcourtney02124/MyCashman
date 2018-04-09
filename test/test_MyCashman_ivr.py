@@ -2,6 +2,7 @@
 
 """
 This module provides non-REST tests for the MyCashman application, invoked from the IVR (aka sipp scripts)
+Run this immediately after
 
 """
 import time
@@ -10,20 +11,9 @@ import pytest
 from src.sipp_procs import SippClient
 
 def test_ivr_balance():
+    """ Trigger the sipp client script via the REST API, to work around server not reading port 5060 unless app launches client. """
 
-    uac = SippClient(script = "uac_g711_info1.xml", target = "localhost", command="-m 1")
-    clientProc = SippClient.launch(uac)
-    time.sleep(15)
-    # at this point, make sure the client completed
-
-    try:
-        outs, errs = clientProc.communicate(input="q", timeout=10)
-    except TimeoutExpired:
-        clientProc.kill()
-        outs, errs = clientProc.communicate()
-        print(outs)
-        print(errs)
-        pytest.fail('problem with sipp client')
+    "pytest.main("test/test_MyCashman_ivr_trigger_balance.tavern.yaml")
 
     found_balance = False
     fh = None

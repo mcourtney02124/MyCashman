@@ -1,4 +1,4 @@
 #!/bin/bash
 export FLASK_APP=./src/index.py
-flask run
+flask run --host=0.0.0.0
 

@@ -110,10 +110,10 @@ def get_item():
     )
     return jsonify(item.data[0])
 
-@app.route('get_balance')
+@app.route('/get_balance')
 def get_balance_client():
     logging.info("Attempting IVR balance inquiry")
-    uac = SippClient(script="uac_g711_info1.xml", target="127.0.0.1", command="-m 1")
+    uac = SippClient(script="uac_g711_info1.xml", target="127.0.0.1", command="-m 1 -trace_err -i 127.0.0.1")
     clientProc = SippClient.launch(uac)
     time.sleep(15)
     # at this point, make sure the client completed
@@ -126,7 +126,7 @@ def get_balance_client():
         print(outs)
         print(errs)
 
-    return
+    return "ran sipp client"
 
 @app.route('/get_balance', methods=['POST'])
 def get_balance():
